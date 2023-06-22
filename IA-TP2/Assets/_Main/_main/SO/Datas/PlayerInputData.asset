@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c4ca3422194d74986141be69b88c73, type: 3}
   m_Name: PlayerInputData
   m_EditorClassIdentifier: 
-  <MovementId>k__BackingField: 
-  <LightAttackId>k__BackingField: 
-  <HeavyAttackId>k__BackingField: 
-  <JumpId>k__BackingField: 
-  <BlockId>k__BackingField: 
+  <MovementId>k__BackingField: Movement
+  <ShootId>k__BackingField: Shoot
+  <CameraMovementId>k__BackingField: CameraMovement
+  <AimId>k__BackingField: Aim
+  <JumpId>k__BackingField: Jump

@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a52578523888c4695ce2d2d608a91b, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 0
-  <MovementSpeed>k__BackingField: 0
-  <JumpForce>k__BackingField: 0
+  <MaxHealth>k__BackingField: 100
+  <MovementSpeed>k__BackingField: 20
+  <JumpForce>k__BackingField: 10
+  <MouseSens>k__BackingField: 100
   <CheckGroundMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   <OwnerMask>k__BackingField: 0
   <EnemiesMask>k__BackingField: 0
   <InputData>k__BackingField: {fileID: 11400000, guid: c8982453e64bbae49ab9d49c1a47699e, type: 2}
