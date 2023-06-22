@@ -42,7 +42,6 @@ namespace _Main._main.Scripts.Managers
         private void CameraMovementOnPerformed(InputAction.CallbackContext p_obj)
         {
             m_inputValue = p_obj.ReadValue<Vector2>();
-            Debug.Log(m_inputValue);
         }
 
 

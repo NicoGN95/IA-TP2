@@ -22,11 +22,19 @@ namespace _Main._main.Scripts.FSM.States.PlayerStates.States
 
             var l_inputManager = InputManager.Instance;
             l_inputManager.SubscribeInput(Model.GetPlayerInputData().MovementId, MovementOnPerformed);
+            l_inputManager.SubscribeInput(Model.GetPlayerInputData().ShootId, ShootOnPerformed);
+            l_inputManager.SubscribeInput(Model.GetPlayerInputData().ReloadId, ReloadOnPerformed);
 
-            if (l_inputManager.TryGetInputAction(Model.GetPlayerInputData().MovementId, out var l_inputAction))
-            {
-                
-            }
+        }
+
+        private void ReloadOnPerformed(InputAction.CallbackContext p_obj)
+        {
+            Model.ReloadGun();
+        }
+
+        private void ShootOnPerformed(InputAction.CallbackContext p_obj)
+        {
+            Model.Shoot();
         }
 
         private void MovementOnPerformed(InputAction.CallbackContext p_obj)
@@ -50,7 +58,6 @@ namespace _Main._main.Scripts.FSM.States.PlayerStates.States
             //TODO, hacer todo por RB m_speed = 1;
             Model.GetView().SetAnimSpeed(m_speed);
             
-            //if(speed >= 0.1) Back to idle
         }
 
         public override void ExitState()
