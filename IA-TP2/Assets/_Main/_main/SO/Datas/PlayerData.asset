@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 0
-  <Defense>k__BackingField: 0
-  <StunTime>k__BackingField: 0
   <MovementSpeed>k__BackingField: 0
   <JumpForce>k__BackingField: 0
   <CheckGroundMask>k__BackingField:
@@ -22,5 +20,6 @@ MonoBehaviour:
     m_Bits: 0
   <OwnerMask>k__BackingField: 0
   <EnemiesMask>k__BackingField: 0
-  <InputData>k__BackingField: {fileID: 0}
-  <States>k__BackingField: []
+  <InputData>k__BackingField: {fileID: 11400000, guid: c8982453e64bbae49ab9d49c1a47699e, type: 2}
+  <States>k__BackingField:
+  - {fileID: 11400000, guid: b9873cc2396770f44b62c60a17f030c1, type: 2}

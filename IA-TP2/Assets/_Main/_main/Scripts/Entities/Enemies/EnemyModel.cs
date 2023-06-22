@@ -25,7 +25,6 @@ namespace _Main._main.Scripts.Entities.Enemies
         private bool m_isBlocking;
         private void Start()
         {
-
             View = GetComponent<EnemyView>();
             PatrolPoints = GetComponent<WaypointClass>();
             m_rb = GetComponent<Rigidbody>();
@@ -109,43 +108,19 @@ namespace _Main._main.Scripts.Entities.Enemies
         public override void Die()
         {
             View.PlayDieAnimation();
-            Debug.Log("se murio");
-
-            var l_enemies = new Collider[10];
-
-            var l_enemiesCount =
-                Physics.OverlapSphereNonAlloc(transform.position, data.PanicRadiusEffect, l_enemies, data.OwnerMask);
-
 
             Destroy(gameObject);
         }
 
         public override void HitToModel<T>(T p_attacker, float p_damage)
         {
-            if (IsParring)
-            {
-                p_attacker.Stun();
-                return;
-            }
-
-            if (IsBlocking)
-            {
-                return;
-            }
             
             DoDamage(p_damage);
-        }
-
-        public override void Stun()
-        {
-            View.PlayStunAnimation();
         }
 
         #endregion
         
 
-        
-        
         #if UNITY_EDITOR
 
         

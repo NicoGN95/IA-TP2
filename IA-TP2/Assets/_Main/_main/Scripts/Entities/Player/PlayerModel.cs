@@ -31,16 +31,6 @@ namespace _Main._main.Scripts.Entities.Player
 
         public override void HitToModel<T>(T p_attacker, float p_damage)
         {
-            if (IsParring)
-            {
-                p_attacker.Stun();
-                return;
-            }
-
-            if (IsBlocking)
-            {
-                return;
-            }
             
             DoDamage(p_damage);
         }

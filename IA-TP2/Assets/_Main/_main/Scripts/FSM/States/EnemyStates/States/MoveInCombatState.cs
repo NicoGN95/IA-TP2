@@ -17,9 +17,12 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
         {
             var l_rndVector = new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
             m_datas[p_model] = l_rndVector.normalized;
+            
+            /*
             var l_rnd = Random.Range(p_model.GetData().MoveInCombatTimeRange[0],
                 p_model.GetData().MoveInCombatTimeRange[1]);
             p_model.SetTimeToEndAction(l_rnd);
+            */
             //Seleccionar la direccion del movimiento respecto al enemigo
             // izq, der, adelante, atras
         }
