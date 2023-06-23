@@ -26,12 +26,12 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
         private readonly Dictionary<EnemyModel, CombatData> m_timerDictionary = new Dictionary<EnemyModel, CombatData>();
         public override void EnterState(EnemyModel p_model)
         {
-            /*
+            
             var l_rnd = Random.Range(p_model.GetData().CombatActionTimerRange[0],
                 p_model.GetData().CombatActionTimerRange[1]);
             
             m_timerDictionary[p_model] = new CombatData(Time.time + l_rnd, p_model.GetCombatStateByRoulette());
-            */
+            
             p_model.ActivateCombatMode();
         }
 

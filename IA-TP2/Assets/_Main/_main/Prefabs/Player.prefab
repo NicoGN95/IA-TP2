@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: 90e0a1fe95db05446b5fef1ef2ff6c7b, type: 2}
   data: {fileID: 11400000, guid: 90e0a1fe95db05446b5fef1ef2ff6c7b, type: 2}
-  cameraManagerTransform: {fileID: 0}
+  cameraManagerTransform: {fileID: 1380243038}
   handTransform: {fileID: 7531165017110145150}
   checkGroundPosition: {fileID: 219667653}
   gun: {fileID: 0}

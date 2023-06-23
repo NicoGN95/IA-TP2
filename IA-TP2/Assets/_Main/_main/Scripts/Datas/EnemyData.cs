@@ -23,8 +23,8 @@ namespace _Main._main.Scripts.Datas
         [field : SerializeField] public float CombatRange { get; private set; }
         [field : SerializeField] public List<State> CombatStates { get; private set; }
         [field : SerializeField] public List<float> CombatStatesChances { get; private set; }
-        
-        [field : SerializeField] public int BaseDamage { get; private set; }
+        [field : SerializeField] public float[] CombatActionTimerRange { get; private set; }
+        [field : SerializeField] public float[] MoveInCombatTimeRange { get; private set; }
         
         [field: Header("Line of Sight")]
         [field : SerializeField] public float ViewDepthRange { get; private set; }

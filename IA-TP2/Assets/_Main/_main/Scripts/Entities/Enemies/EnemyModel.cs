@@ -9,7 +9,6 @@ namespace _Main._main.Scripts.Entities.Enemies
     public class EnemyModel : BaseModel
     {
         [SerializeField] private EnemyData data;
-        [SerializeField] private Transform handTransform;
         
         public EnemyView View{ get; private set; }
         public WaypointClass PatrolPoints{ get; private set; }
@@ -21,8 +20,6 @@ namespace _Main._main.Scripts.Entities.Enemies
         private State m_combatState;
 
         private float m_timeToEndAlert;
-        private bool m_isParring;
-        private bool m_isBlocking;
         private void Start()
         {
             View = GetComponent<EnemyView>();
@@ -72,9 +69,6 @@ namespace _Main._main.Scripts.Entities.Enemies
             View.SetCombatAnimation(false);
             
         }
-        public void ExecuteAttack()
-        {
-        }
         
         
 
@@ -98,7 +92,6 @@ namespace _Main._main.Scripts.Entities.Enemies
         
         public float GetDistanceToTarget() => (m_targetTransform.transform.position - transform.position).magnitude;
         public Transform GetTargetTransform() => m_targetTransform;
-        public Transform GetHandTransform() => handTransform;
         public float GetTimeToEndAlert() => m_timeToEndAlert;
         
         #endregion

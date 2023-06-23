@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 1442673164613425868}
   - component: {fileID: 7110709797090777806}
   - component: {fileID: 6591810216415339054}
+  - component: {fileID: 2653730230711244726}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -147,3 +148,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6136466637865425595}
   m_Mesh: {fileID: 4300000, guid: 387df2d7750e6ab4698e1e62a012af82, type: 3}
+--- !u!114 &2653730230711244726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6136466637865425595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c9214493c949938e7e14d625ae70de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 8b30ee13a978bd64c835633824742237, type: 2}
+  shootPoint: {fileID: 1430820479914553506}

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 159a2def59d8b1748b1ffdcca32a2f2d, type: 3}
+  m_Name: BaseEnemyData
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 100
+  <WalkSpeed>k__BackingField: 10
+  <RunSpeed>k__BackingField: 20
+  <CombatMovementSpeed>k__BackingField: 15
+  <AllStatesData>k__BackingField:
+  - {fileID: 11400000, guid: 001a0a435ce7fb942a5a67bc4c687cc1, type: 2}
+  - {fileID: 11400000, guid: 14b521cf96db64743aa62973f7e72c72, type: 2}
+  - {fileID: 11400000, guid: 83ada9dbb6d2a1f44ab24ccf163fc0a9, type: 2}
+  - {fileID: 11400000, guid: d503655e9ece52c40803f4dddc6ee57a, type: 2}
+  - {fileID: 11400000, guid: d503655e9ece52c40803f4dddc6ee57a, type: 2}
+  <CombatRange>k__BackingField: 10
+  <CombatStates>k__BackingField:
+  - {fileID: 11400000, guid: 8caceff7fb21d9146b5f9b81f746b63d, type: 2}
+  - {fileID: 11400000, guid: 300e40f2de7bbbc4e944e066ab5fb2d0, type: 2}
+  - {fileID: 11400000, guid: d5997c43ad880c746aa0e9dd2d875d88, type: 2}
+  <CombatStatesChances>k__BackingField:
+  - 60
+  - 20
+  - 20
+  <CombatActionTimerRange>k__BackingField:
+  - 0.5
+  - 2
+  <MoveInCombatTimeRange>k__BackingField:
+  - 1
+  - 3
+  <ViewDepthRange>k__BackingField: 20
+  <ViewDegrees>k__BackingField: 100
+  <SearchTime>k__BackingField: 15
+  <WaitPatrolTime>k__BackingField: 5
+  <OwnerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 512
+  <TargetMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 256

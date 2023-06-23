@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace _Main._main.Scripts.FSM.States.EnemyStates.States
 {
-    [CreateAssetMenu(fileName = "AttackState", menuName = "_main/States/EnemyStates/AttackState", order = 0)]
-    public class AttackState : State
+    [CreateAssetMenu(fileName = "ShootState", menuName = "_main/States/EnemyStates/ShootState", order = 0)]
+    public class ShootState : State
     {
         public override void EnterState(EnemyModel p_model)
         {
@@ -18,7 +18,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
 
         public override void ExecuteState(EnemyModel p_model)
         {
-            p_model.ExecuteAttack();
+            
         }
 
         public override void ExitState(EnemyModel p_model)
