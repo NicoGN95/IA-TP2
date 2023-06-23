@@ -22,7 +22,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
             m_patrolDatas[p_model].TargetPatrolPoint = p_model.PatrolPoints[0];
             m_patrolDatas[p_model].WaitTime = p_model.GetData().WaitPatrolTime;
             
-            p_model.SbController.SetSeekSb();
+            p_model.SbController.SetZeroSb();
         }
 
         public override void ExecuteState(EnemyModel p_model)

@@ -16,8 +16,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
         {
             var l_diff = p_model.LastKnownTargetLocation - p_model.transform.position;
 
-            var l_dir = l_diff.normalized;
-            p_model.Move(l_dir, p_model.GetData().RunSpeed);
+            p_model.Move(l_diff.normalized, p_model.GetData().RunSpeed);
         }
 
         public override void ExitState(EnemyModel p_model)

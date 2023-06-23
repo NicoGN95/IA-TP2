@@ -24,7 +24,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
         {
             m_dictionary[p_model] = new SearchData(p_model.LastKnownTargetLocation, 5);
             p_model.SetTimeToEndSearch(p_model.GetData().SearchTime);
-            p_model.SbController.SetPursuitSb();
+            p_model.SbController.SetZeroSb();
         }
 
         public override void ExecuteState(EnemyModel p_model)

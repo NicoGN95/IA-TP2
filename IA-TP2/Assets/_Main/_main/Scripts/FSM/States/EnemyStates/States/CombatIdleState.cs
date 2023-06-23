@@ -31,14 +31,14 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
                 p_model.GetData().CombatActionTimerRange[1]);
             
             m_timerDictionary[p_model] = new CombatData(Time.time + l_rnd, p_model.GetCombatStateByRoulette());
-            
+            p_model.SbController.SetZeroSb();
             p_model.ActivateCombatMode();
         }
 
         
         public override void ExecuteState(EnemyModel p_model)
         {
-            p_model.MoveInCombat(Vector3.zero);
+            p_model.Move(Vector3.zero, 0f);
             if (m_timerDictionary[p_model].CombatTimer < Time.time)
             {
                 EventService.DispatchEvent(new ChangeEnemyStateCustomEventData(p_model, m_timerDictionary[p_model].CombatState.GetType()));

@@ -9,16 +9,14 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
     {
         public override void EnterState(EnemyModel p_model)
         {
-            /*
-            var l_attack = p_model.EnemyActionController.GetAttackFromRoulette();
-            p_model.SetTimeToEndAction(l_attack.AttackData.AnimationLength);
-            p_model.InitAttack(l_attack);
-            */
+            p_model.SetTimeToEndAction(p_model.GetData().ShootTime);
+            p_model.Shoot();
+            p_model.SbController.SetZeroSb();
         }
 
         public override void ExecuteState(EnemyModel p_model)
         {
-            
+            p_model.Move(Vector3.zero, 0f);
         }
 
         public override void ExitState(EnemyModel p_model)

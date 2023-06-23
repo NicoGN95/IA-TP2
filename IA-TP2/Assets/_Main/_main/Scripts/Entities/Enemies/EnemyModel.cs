@@ -11,7 +11,7 @@ namespace _Main._main.Scripts.Entities.Enemies
     public class EnemyModel : BaseModel
     {
         [SerializeField] private EnemyData data;
-        
+        [SerializeField] private LayerMask obsLayer;
         public EnemyView View{ get; private set; }
         public WaypointClass PatrolPoints{ get; private set; }
         public Vector3 LastKnownTargetLocation { get; private set; }
@@ -35,8 +35,8 @@ namespace _Main._main.Scripts.Entities.Enemies
             m_targetTransform = GameManager.Instance.GetLocalPlayer().transform;
 
             m_CombatRoulette = new RouletteWheel<State>(data.CombatStates, data.CombatStatesChances);
-            SbController = new SbController(this, data.PersuitTime);
-            m_obstacleAvoidance = new ObstacleAvoidance(transform, 5, 5, data.ViewDegrees, 7);
+            SbController = new SbController(this, data.PursuitTime);
+            m_obstacleAvoidance = new ObstacleAvoidance(transform, 5, 5, data.ViewDegrees, obsLayer);
         }
 
 
@@ -51,23 +51,15 @@ namespace _Main._main.Scripts.Entities.Enemies
             transform.forward = Vector3.Lerp(transform.forward, l_dir, 0.2f);
         }
 
-        public void MoveInCombat(Vector3 p_direction)
-        {
-            p_direction = p_direction.normalized;
-            
-            p_direction.y = 0;
-            m_rb.velocity = p_direction * data.CombatMovementSpeed;
-            View.PlayMovementCombatAnim(m_rb.velocity);
 
-            var l_dirToPlayer = m_targetTransform.position - transform.position;
-            transform.forward = Vector3.Lerp(transform.forward, l_dirToPlayer.normalized, 0.2f);
-        }
-        
-        
-
-    #region Combat
+        #region Combat
 
         private float m_timeToFinishAction;
+
+        public void Shoot()
+        {
+            
+        }
         public void ActivateCombatMode()
         {
             View.SetCombatAnimation(true);

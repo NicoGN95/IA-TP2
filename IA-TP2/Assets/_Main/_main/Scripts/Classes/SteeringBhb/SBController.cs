@@ -14,6 +14,7 @@ namespace _Main._main.Scripts.Classes.SteeringBhb
         private Pursuit m_pursuit;
         private Evade m_evade;
         private Flee m_flee;
+        private ZeroSteering m_zero;
         
         float m_pursuitTime;
         ISteeringBehaviour m_currCurrSb;
@@ -37,12 +38,14 @@ namespace _Main._main.Scripts.Classes.SteeringBhb
             m_flee = new Flee(l_enemyTransform, l_playerTransform);
             m_pursuit = new Pursuit(l_enemyTransform, m_target, m_pursuitTime);
             m_evade = new Evade(l_enemyTransform, m_target, m_pursuitTime);
+            m_zero = new ZeroSteering();
         }
 
         public void SetSeekSb() => m_currCurrSb = m_seek;
         public void SetFleeSb() => m_currCurrSb = m_flee;
         public void SetPursuitSb() => m_currCurrSb = m_pursuit;
         public void SetEvadeSb() => m_currCurrSb = m_evade;
+        public void SetZeroSb() => m_currCurrSb = m_zero;
 
     }
 }

@@ -21,6 +21,8 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
             
             var l_rnd = Random.Range(p_model.GetData().MoveInCombatTimeRange[0],
                 p_model.GetData().MoveInCombatTimeRange[1]);
+            
+            p_model.SbController.SetZeroSb();
             p_model.SetTimeToEndAction(l_rnd);
             
             //Seleccionar la direccion del movimiento respecto al enemigo
@@ -30,11 +32,12 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
         public override void ExecuteState(EnemyModel p_model)
         {
             //Mover al enemy en la direccion deseada mientras esta mirando al player
-            p_model.MoveInCombat(m_datas[p_model]);
+            p_model.Move(m_datas[p_model].normalized, p_model.GetData().CombatMovementSpeed);
         }
 
         public override void ExitState(EnemyModel p_model)
         {
+            m_datas.Remove(p_model);
         }
     }
 }
