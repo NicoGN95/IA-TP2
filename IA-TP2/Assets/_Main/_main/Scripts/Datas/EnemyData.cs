@@ -34,6 +34,7 @@ namespace _Main._main.Scripts.Datas
         [field: Header("Timers")]
         [field : SerializeField] public float SearchTime { get; private set; }
         [field : SerializeField] public float WaitPatrolTime { get; private set; }
+        [field : SerializeField] public float PersuitTime { get; private set; }
         
         
         [field: Header("Masks")]

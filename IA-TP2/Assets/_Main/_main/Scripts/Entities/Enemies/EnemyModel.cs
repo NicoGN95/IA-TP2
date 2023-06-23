@@ -1,4 +1,6 @@
 ﻿using _Main._main.Scripts.Classes;
+using _Main._main.Scripts.Classes.SteeringBhb;
+using _Main._main.Scripts.Classes.SteeringBhb.Steering_Behaviours;
 using _Main._main.Scripts.Datas;
 using _Main._main.Scripts.FSM.Base;
 using _Main._main.Scripts.Managers;
@@ -14,12 +16,17 @@ namespace _Main._main.Scripts.Entities.Enemies
         public WaypointClass PatrolPoints{ get; private set; }
         public Vector3 LastKnownTargetLocation { get; private set; }
 
+        public SbController SbController;
+        
         private Rigidbody m_rb;
         private Transform m_targetTransform;
         private RouletteWheel<State> m_CombatRoulette;
         private State m_combatState;
 
         private float m_timeToEndAlert;
+
+
+        private ObstacleAvoidance m_obstacleAvoidance;
         private void Start()
         {
             View = GetComponent<EnemyView>();
@@ -28,18 +35,20 @@ namespace _Main._main.Scripts.Entities.Enemies
             m_targetTransform = GameManager.Instance.GetLocalPlayer().transform;
 
             m_CombatRoulette = new RouletteWheel<State>(data.CombatStates, data.CombatStatesChances);
+            SbController = new SbController(this, data.PersuitTime);
+            m_obstacleAvoidance = new ObstacleAvoidance(transform, 5, 5, data.ViewDegrees, 7);
         }
 
 
         public void Move(Vector3 p_direction, float p_speed)
         {
             //TODO: Que todo movimiento sea gradual y por rigidbody, que no pase del 0% al 100% del movimiento
-            p_direction = p_direction.normalized;
-            
-            p_direction.y = 0;
-            m_rb.velocity = p_direction * p_speed;
+            var l_dir = p_direction + m_obstacleAvoidance.GetDir() + SbController.CurrSb.GetDir();
+            l_dir = l_dir.normalized;
+            l_dir.y = 0;
+            m_rb.velocity = l_dir * p_speed;
             View.PlayMovementAnimation(m_rb.velocity.magnitude);
-            transform.forward = Vector3.Lerp(transform.forward, p_direction, 0.2f);
+            transform.forward = Vector3.Lerp(transform.forward, l_dir, 0.2f);
         }
 
         public void MoveInCombat(Vector3 p_direction)
