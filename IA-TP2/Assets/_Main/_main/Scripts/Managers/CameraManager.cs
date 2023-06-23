@@ -59,7 +59,7 @@ namespace _Main._main.Scripts.Managers
             m_XRotation -= l_mouseY;
             m_XRotation = Mathf.Clamp(m_XRotation, -90f, 90f);
 
-            m_camera.transform.localRotation = Quaternion.Euler(m_XRotation,0,0);
+            pivot.transform.localRotation = Quaternion.Euler(m_XRotation,0,0);
             m_playerModel.transform.Rotate(Vector3.up * l_mouseX);
         }
     }

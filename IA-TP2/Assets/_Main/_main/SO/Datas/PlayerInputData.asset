@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementId>k__BackingField: Movement
   <ShootId>k__BackingField: Shoot
+  <ReloadId>k__BackingField: Reload
   <CameraMovementId>k__BackingField: CameraMovement
   <AimId>k__BackingField: Aim
   <JumpId>k__BackingField: Jump

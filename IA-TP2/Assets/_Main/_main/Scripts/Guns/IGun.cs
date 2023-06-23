@@ -5,7 +5,7 @@ namespace _Main._main.Scripts.Guns
 {
     public interface IGun
     {
-        void Shoot();
+        void Shoot(Vector3 p_endPoint);
         void Reload();
     }
 }

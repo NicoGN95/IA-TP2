@@ -28,14 +28,22 @@ namespace _Main._main.Scripts.Entities.Player
             return Physics.CheckSphere(checkGroundPosition.position, 0.1f, data.CheckGroundMask);;
         }
 
-        public void Shoot() => gun.Shoot();
+        public void Shoot() => gun.Shoot(GetFrontPoint());
         public void ReloadGun() => gun.Reload();
         public float GetCameraRotationY() => cameraManagerTransform.eulerAngles.y;
         public PlayerVisual GetView() => m_view;
-
+        public Rifle GetGun() => gun;
+        
+        
+        private Vector3 GetFrontPoint()
+        {
+            var l_cameraTransform = Camera.main.transform;
+            Physics.Raycast(l_cameraTransform.position, l_cameraTransform.forward, out var l_hit);
+            
+            return l_hit.point;
+        }
         public override void HitToModel<T>(T p_attacker, float p_damage)
         {
-            
             DoDamage(p_damage);
         }
     }
