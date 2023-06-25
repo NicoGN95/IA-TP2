@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 100
-  <MovementSpeed>k__BackingField: 20
-  <JumpForce>k__BackingField: 10
+  <MovementSpeed>k__BackingField: 8
+  <JumpForce>k__BackingField: 5
   <MouseSens>k__BackingField: 100
   <CheckGroundMask>k__BackingField:
     serializedVersion: 2
@@ -24,3 +24,7 @@ MonoBehaviour:
   <InputData>k__BackingField: {fileID: 11400000, guid: c8982453e64bbae49ab9d49c1a47699e, type: 2}
   <States>k__BackingField:
   - {fileID: 11400000, guid: b9873cc2396770f44b62c60a17f030c1, type: 2}
+  <InteractLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
+  <InteractRadius>k__BackingField: 0.5
