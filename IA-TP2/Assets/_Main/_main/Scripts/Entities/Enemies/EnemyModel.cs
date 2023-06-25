@@ -1,9 +1,11 @@
-﻿using _Main._main.Scripts.Classes;
+﻿using System.Collections.Generic;
+using _Main._main.Scripts.Classes;
 using _Main._main.Scripts.Classes.SteeringBhb;
 using _Main._main.Scripts.Classes.SteeringBhb.Steering_Behaviours;
 using _Main._main.Scripts.Datas;
 using _Main._main.Scripts.FSM.Base;
 using _Main._main.Scripts.Managers;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace _Main._main.Scripts.Entities.Enemies
@@ -51,6 +53,20 @@ namespace _Main._main.Scripts.Entities.Enemies
             transform.forward = Vector3.Lerp(transform.forward, l_dir, 0.2f);
         }
 
+
+        #region Pathfinding
+
+        private List<Vector3> m_pathPoints = new List<Vector3>();
+        public void SetWayPoints(List<Node> p_newPoints)
+        {
+            foreach (var l_node in p_newPoints)
+            {
+                m_pathPoints.Add(l_node.transform.position);
+            }
+        }
+
+        #endregion
+        
 
         #region Combat
 

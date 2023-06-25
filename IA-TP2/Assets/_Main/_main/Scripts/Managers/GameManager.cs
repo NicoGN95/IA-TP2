@@ -1,4 +1,5 @@
 using _Main._main.Scripts.Classes;
+using _Main._main.Scripts.Classes.Pathfinding;
 using _Main._main.Scripts.Entities.Player;
 using _Main._main.Scripts.Guns;
 using UnityEngine;
@@ -9,7 +10,8 @@ namespace _Main._main.Scripts.Managers
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-        
+        public MyGrid grid;
+
         [SerializeField] private string loadSceneName;
         [SerializeField] private Bullet bulletPrefab;
         private PlayerModel m_localPlayer;

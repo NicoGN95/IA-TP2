@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: BaseEnemyData
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 100
-  <WalkSpeed>k__BackingField: 3
+  <WalkSpeed>k__BackingField: 5
   <RunSpeed>k__BackingField: 10
   <CombatMovementSpeed>k__BackingField: 15
   <AllStatesData>k__BackingField:
-  - {fileID: 11400000, guid: 001a0a435ce7fb942a5a67bc4c687cc1, type: 2}
+  - {fileID: 11400000, guid: 217d78b8050ecbc43a317cb0edaa7113, type: 2}
   - {fileID: 11400000, guid: 14b521cf96db64743aa62973f7e72c72, type: 2}
   - {fileID: 11400000, guid: 83ada9dbb6d2a1f44ab24ccf163fc0a9, type: 2}
   - {fileID: 11400000, guid: d503655e9ece52c40803f4dddc6ee57a, type: 2}
@@ -42,7 +42,7 @@ MonoBehaviour:
   <ViewDepthRange>k__BackingField: 20
   <ViewDegrees>k__BackingField: 100
   <SearchTime>k__BackingField: 15
-  <WaitPatrolTime>k__BackingField: 5
+  <WaitPatrolTime>k__BackingField: 1
   <PursuitTime>k__BackingField: 0
   <ShootTime>k__BackingField: 0
   <TakeCoverTime>k__BackingField: 0
