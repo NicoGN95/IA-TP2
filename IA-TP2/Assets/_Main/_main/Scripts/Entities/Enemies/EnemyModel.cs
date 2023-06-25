@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using _Main._main.Scripts.Classes;
 using _Main._main.Scripts.Classes.SteeringBhb;
-using _Main._main.Scripts.Classes.SteeringBhb.Steering_Behaviours;
 using _Main._main.Scripts.Datas;
 using _Main._main.Scripts.FSM.Base;
 using _Main._main.Scripts.Managers;
+using _Main._main.Scripts.zzz;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -14,6 +14,7 @@ namespace _Main._main.Scripts.Entities.Enemies
     {
         [SerializeField] private EnemyData data;
         [SerializeField] private LayerMask obsLayer;
+        [SerializeField] private float ObsAvoidanceMult;
         public EnemyView View{ get; private set; }
         public WaypointClass PatrolPoints{ get; private set; }
         public Vector3 LastKnownTargetLocation { get; private set; }
@@ -38,15 +39,14 @@ namespace _Main._main.Scripts.Entities.Enemies
 
             m_CombatRoulette = new RouletteWheel<State>(data.CombatStates, data.CombatStatesChances);
             SbController = new SbController(this, data.PursuitTime);
-            m_obstacleAvoidance = new ObstacleAvoidance(transform, 5, 5, data.ViewDegrees, obsLayer);
+            m_obstacleAvoidance = new ObstacleAvoidance(this);
         }
 
 
         public void Move(Vector3 p_direction, float p_speed)
         {
             //TODO: Que todo movimiento sea gradual y por rigidbody, que no pase del 0% al 100% del movimiento
-            var l_dir = p_direction + m_obstacleAvoidance.GetDir() + SbController.CurrSb.GetDir();
-            l_dir = l_dir.normalized;
+            var l_dir = m_obstacleAvoidance.GetDir(p_direction) + SbController.CurrSb.GetDir();
             l_dir.y = 0;
             m_rb.velocity = l_dir * p_speed;
             View.PlayMovementAnimation(m_rb.velocity.magnitude);

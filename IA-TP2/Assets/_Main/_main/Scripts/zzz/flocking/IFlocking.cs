@@ -1,8 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IFlocking 
+namespace _Main._main.Scripts.zzz.flocking
 {
-    Vector3 GetDir(List<IBoid> boids, IBoid self);
+    public interface IFlocking 
+    {
+        Vector3 GetDir(List<IBoid> boids, IBoid self);
+    }
 }

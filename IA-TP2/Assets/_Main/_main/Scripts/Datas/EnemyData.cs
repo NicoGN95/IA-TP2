@@ -42,6 +42,14 @@ namespace _Main._main.Scripts.Datas
         [field: Header("Masks")]
         [field : SerializeField] public LayerMask OwnerMask { get; private set; }
         [field : SerializeField] public LayerMask TargetMask { get; private set; }
+        [field: Header("Obs Avoidance")]
+        
+        [field : SerializeField] public LayerMask ObsMask { get; private set; }
+        [field : SerializeField] public int MaxObjectsDetection { get; private set; }
+        [field : SerializeField] public float CheckRadiusNearObstacles { get; private set; }
+        [field : SerializeField] public float BehaviourIntensity { get; private set; }
+        
+        
         
     }
 }

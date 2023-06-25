@@ -32,7 +32,7 @@ namespace _Main._main.Scripts.Classes.Pathfinding
             {
                 foreach (var node in m_grid)
                 {
-                    DestroyImmediate(node.gameObject);
+                    
                 }
             }
             
@@ -46,7 +46,7 @@ namespace _Main._main.Scripts.Classes.Pathfinding
             {
                 foreach (var node in m_grid)
                 {
-                    DestroyImmediate(node.gameObject);
+                    
                 }
             }
             
@@ -84,7 +84,7 @@ namespace _Main._main.Scripts.Classes.Pathfinding
                         Vector3 l_worldPoint = l_worldBottomLeft + Vector3.right * (l_x * m_nodeDiameter + nodeRadius) + Vector3.up * ySpacing * ((l_y) * m_nodeDiameter + nodeRadius) + Vector3.forward *(l_z*m_nodeDiameter+ nodeRadius);
                         bool l_walkable =! Physics.CheckBox(l_worldPoint, l_halfExtents, Quaternion.identity, unWalkableMask);
                         
-                        var l_node = Instantiate(myNodePrefab);
+                        var l_node = new MyNode();
                         l_node.Initialize(l_walkable, l_worldPoint, m_nodeDiameter/2 , new Vector3(l_x, l_y, l_z));
 
                         
@@ -96,29 +96,7 @@ namespace _Main._main.Scripts.Classes.Pathfinding
             Debug.Log(m_grid.Length);
         }
 
-
-        public MyNode GetClosestNodeToWorldPos(Vector3 p_worldPos)
-        {
-            float l_closestDistance = 100;
-            MyNode l_closestNode = null;
-            
-            
-            foreach (var l_node in m_grid)
-            {
-                if (!l_node.Walkable)
-                    continue;
-
-                var l_distance = Vector3.Distance(l_node.transform.position, p_worldPos);
-                if (l_distance < l_closestDistance)
-                {
-                    l_closestDistance = l_distance;
-                    l_closestNode = l_node;
-                }
-            }
-
-            return l_closestNode;
-        }
-        
+       
         public MyNode NodeFromWorldPoint(Vector3 p_worldPosition)
         {
             var l_position = transform.position;

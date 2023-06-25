@@ -52,3 +52,9 @@ MonoBehaviour:
   <TargetMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
+  <ObsMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 1152
+  <MaxObjectsDetection>k__BackingField: 5
+  <CheckRadiusNearObstacles>k__BackingField: 2
+  <BehaviourIntensity>k__BackingField: 4

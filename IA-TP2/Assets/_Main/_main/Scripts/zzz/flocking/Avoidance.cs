@@ -1,27 +1,28 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class Avoidance : MonoBehaviour, IFlocking
+namespace _Main._main.Scripts.zzz.flocking
 {
-    public float multiplier;
-    public float personalRange;
-    public Vector3 GetDir(List<IBoid> boids, IBoid self)
+    public class Avoidance : MonoBehaviour, IFlocking
     {
-        Vector3 dir = Vector3.zero;
-        for (int i = 0; i < boids.Count; i++)
+        public float multiplier;
+        public float personalRange;
+        public Vector3 GetDir(List<IBoid> boids, IBoid self)
         {
-            Vector3 diff = self.Position - boids[i].Position;
-            float distance = diff.magnitude;
-            if (distance > personalRange) continue;
-            dir += diff.normalized * (personalRange - distance);
+            Vector3 dir = Vector3.zero;
+            for (int i = 0; i < boids.Count; i++)
+            {
+                Vector3 diff = self.Position - boids[i].Position;
+                float distance = diff.magnitude;
+                if (distance > personalRange) continue;
+                dir += diff.normalized * (personalRange - distance);
+            }
+            return dir.normalized * multiplier;
         }
-        return dir.normalized * multiplier;
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, personalRange);
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, personalRange);
+        }
     }
 }
