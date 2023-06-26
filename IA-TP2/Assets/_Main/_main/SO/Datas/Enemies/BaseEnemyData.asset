@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 100
   <Tag>k__BackingField: Enemy
-  <WalkSpeed>k__BackingField: 4
-  <RunSpeed>k__BackingField: 6
-  <CombatMovementSpeed>k__BackingField: 5
+  <WalkSpeed>k__BackingField: 2
+  <RunSpeed>k__BackingField: 4
+  <CombatMovementSpeed>k__BackingField: 4
   <AllStatesData>k__BackingField:
   - {fileID: 11400000, guid: 217d78b8050ecbc43a317cb0edaa7113, type: 2}
   - {fileID: 11400000, guid: 14b521cf96db64743aa62973f7e72c72, type: 2}
@@ -53,10 +53,10 @@ MonoBehaviour:
   <TakeCoverTime>k__BackingField: 5
   <ObsMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 3072
-  <MaxObjectsDetection>k__BackingField: 5
-  <CheckRadiusNearObstacles>k__BackingField: 2
-  <BehaviourIntensity>k__BackingField: 4
+    m_Bits: 1024
+  <MaxObjectsDetection>k__BackingField: 10
+  <CheckRadiusNearObstacles>k__BackingField: 1
+  <BehaviourIntensity>k__BackingField: 5
   <TargetMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 256

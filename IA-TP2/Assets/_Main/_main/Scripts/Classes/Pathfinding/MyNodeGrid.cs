@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _Main._main.Scripts.Managers;
 using UnityEngine;
 
 namespace _Main._main.Scripts.Classes.Pathfinding
 {
-    public class MyGrid : MonoBehaviour
+    public class MyNodeGrid : MonoBehaviour
     {
         [SerializeField] private MyNode myNodePrefab;
         [SerializeField] private LayerMask unWalkableMask;
@@ -20,47 +21,19 @@ namespace _Main._main.Scripts.Classes.Pathfinding
         private int m_gridSizeY;
         private int m_gridSizeZ;
 
-        void Awake()
+
+        private void Awake()
         {
+            GameManager.Instance.SetGrid(this);
+            Debug.Log("AHHHHHHHHHHHHH");
             Initialize();
         }
 
-        [ContextMenu("DeleteGrid")]
-        private void DeleteGrid()
-        {
-            if (m_grid != null)
-            {
-                foreach (var node in m_grid)
-                {
-                    
-                }
-            }
-            
-        }
-        
-        
-        [ContextMenu("ReloadGrid")]
-        private void ReloadGrid()
-        {
-            if (m_grid != null)
-            {
-                foreach (var node in m_grid)
-                {
-                    
-                }
-            }
-            
-            m_nodeDiameter = nodeRadius*2;
-            m_gridSizeX = Mathf.RoundToInt(gridworldSize.x/m_nodeDiameter);
-            m_gridSizeY = Mathf.RoundToInt(gridworldSize.y/m_nodeDiameter);
-            m_gridSizeZ = Mathf.RoundToInt(gridworldSize.z/m_nodeDiameter);
-            CreateGrid();
-        }
-        
+
         [ContextMenu("GenerateGrid")]
         private void Initialize()
         {
-            GameManager.Instance.SetGrid(this);
+            
             m_nodeDiameter = nodeRadius*2;
             m_gridSizeX = Mathf.RoundToInt(gridworldSize.x/m_nodeDiameter);
             m_gridSizeY = Mathf.RoundToInt(gridworldSize.y/m_nodeDiameter);

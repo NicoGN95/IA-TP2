@@ -25,7 +25,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
         public override void EnterState(EnemyModel p_model)
         {
             m_dictionary[p_model] = new SearchData();
-            var l_grid = GameManager.Instance.grid;
+            var l_grid = GameManager.Instance.nodeGrid;
             
             var l_data = m_dictionary[p_model];
             l_data.PathToTarget = new List<MyNode>();
@@ -57,7 +57,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
 
                 if (l_data.PathCount >= l_data.PathToTarget.Count)
                 {
-                    var l_grid = GameManager.Instance.grid;
+                    var l_grid = GameManager.Instance.nodeGrid;
                     var l_closestNode = l_grid.NodeFromWorldPoint(p_model.transform.position);
                     Vector3 l_rndVector = new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
                     
@@ -116,7 +116,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
             
         private List<MyNode> GetConnections(MyNode p_curr)
         {
-            var l_grid = GameManager.Instance.grid;
+            var l_grid = GameManager.Instance.nodeGrid;
                 
             return l_grid.GetNeighbours(p_curr).ToList();
         }

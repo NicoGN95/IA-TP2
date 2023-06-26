@@ -36,7 +36,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
             l_data.WaitTime = p_model.GetData().WaitPatrolTime;
             
             
-            var l_grid = GameManager.Instance.grid;
+            var l_grid = GameManager.Instance.nodeGrid;
             
             for (int l_i = 0; l_i < p_model.PatrolPoints.Lenght; l_i++)
             {
@@ -70,7 +70,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
                 
                 if (l_data.PathPointCount >= l_data.Path.Count)
                 {
-                    var l_closestNodeToEnemy = GameManager.Instance.grid.NodeFromWorldPoint(p_model.transform.position);
+                    var l_closestNodeToEnemy = GameManager.Instance.nodeGrid.NodeFromWorldPoint(p_model.transform.position);
 
                     l_data.PatrolCount++;
 
@@ -133,7 +133,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
             
             private List<MyNode> GetConnections(MyNode p_curr)
             {
-                var l_grid = GameManager.Instance.grid;
+                var l_grid = GameManager.Instance.nodeGrid;
                 
                 return l_grid.GetNeighbours(p_curr).ToList();
             }
