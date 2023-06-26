@@ -9,11 +9,8 @@ namespace _Main._main.Scripts.Datas
     public class PlayerData : BaseData
     {
         [field: SerializeField] public float MovementSpeed { get; private set; }
-        [field: SerializeField] public float JumpForce { get; private set; }
         [field: SerializeField] public float MouseSens { get; private set; }
         [field: SerializeField] public LayerMask CheckGroundMask { get; private set; }
-        [field: SerializeField] public int OwnerMask { get; private set; }
-        [field: SerializeField] public int EnemiesMask { get; private set; }
         [field: SerializeField] public PlayerInputData InputData { get; private set; }
 
         [field: SerializeField] public List<PlayerState> States { get; private set; }

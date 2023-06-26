@@ -9,6 +9,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.Conditions
     {
         public override bool CompleteCondition(EnemyModel p_model)
         {
+            Debug.Log($"Time to end alert {p_model.GetTimeToEndAlert() - Time.time}, aka {p_model.GetTimeToEndAlert() > Time.time}");
             return p_model.GetTimeToEndAlert() > Time.time;
         }
     }

@@ -41,20 +41,27 @@ namespace _Main._main.Scripts.Entities.Enemies
             m_obstacleAvoidance = new ObstacleAvoidance(this);
 
             m_gun = Instantiate(data.GunPrefab);
-            m_gun.Equip(gunPivot, data.OwnerMask);
+            m_gun.Equip(gunPivot, data.Tag);
         
         }
 
 
         public void Move(Vector3 p_destination, float p_speed)
         {
-            //TODO: Que todo movimiento sea gradual y por rigidbody, que no pase del 0% al 100% del movimiento
+            var l_dir = m_obstacleAvoidance.GetDir(p_destination) + SbController.CurrSb.GetDir();
+            l_dir.y = 0;
+            m_rb.velocity = l_dir * p_speed;
+            LookAtDir(l_dir);
+            View.PlayMovementAnimation(m_rb.velocity.magnitude);
+        }
+
+        public void MoveInCombat(Vector3 p_destination, float p_speed)
+        {
             var l_dir = m_obstacleAvoidance.GetDir(p_destination) + SbController.CurrSb.GetDir();
             l_dir.y = 0;
             m_rb.velocity = l_dir * p_speed;
             View.PlayMovementAnimation(m_rb.velocity.magnitude);
         }
-
         public void LookAt(Vector3 p_pointToLook)
         {
             var l_dir = (p_pointToLook - transform.position).normalized;
@@ -62,21 +69,18 @@ namespace _Main._main.Scripts.Entities.Enemies
             transform.forward = Vector3.Lerp(transform.forward, l_dir, 0.2f);
         }
 
+        public void LookAtDir(Vector3 p_dir)
+        {
+            p_dir.y = 0;
+            transform.forward = Vector3.Lerp(transform.forward, p_dir, 0.2f);
+        }
+        
         #region Combat
 
         private float m_timeToFinishAction;
 
         public void Shoot(Vector3 p_dir) => m_gun.ShootToDir(p_dir);
-        public void ActivateCombatMode()
-        {
-            View.SetCombatAnimation(true);
-        }
         
-        public void DeactivateCombatMode()
-        {
-            View.SetCombatAnimation(false);
-            
-        }
         
         
 

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03aa4cfeaeb84d61b35ae276fcb3f01d, type: 3}
   m_Name: '!IsAlertCondition'
   m_EditorClassIdentifier: 
-  condition: {fileID: 11400000, guid: eb1e55222070c3842a8c9b2d276c02e4, type: 2}
+  condition: {fileID: 11400000, guid: aa3f8a9ee36ada540baa2cdacd4a3152, type: 2}

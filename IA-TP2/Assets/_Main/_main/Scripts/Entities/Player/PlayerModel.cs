@@ -24,7 +24,7 @@ namespace _Main._main.Scripts.Entities.Player
             base.Initialized();
             GameManager.Instance.SetLocalPlayer(this);
             m_view = GetComponent<PlayerVisual>();
-            gun.Equip(handTransform, data.OwnerMask);
+            gun.Equip(handTransform, data.Tag);
         }
 
 

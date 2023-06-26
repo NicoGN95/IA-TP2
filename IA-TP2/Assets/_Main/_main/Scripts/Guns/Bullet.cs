@@ -11,23 +11,23 @@ namespace _Main._main.Scripts.Guns
         [SerializeField] private BulletData data;
         private Vector3 m_dir;
         private float m_lifeTime;
-        private LayerMask m_ownerLayer;
-        public void Initialize(Vector3 p_initPos, Vector3 p_initDir, LayerMask p_ownerLayer)
+        private string m_ownerTag;
+        public void Initialize(Vector3 p_initPos, Vector3 p_initDir, string p_ownerTag)
         {
             gameObject.SetActive(true);
             transform.position = p_initPos;
             m_dir = p_initDir;
 
-            transform.forward = m_dir;
+            transform.LookAt(transform.position + m_dir);
 
             m_lifeTime = Time.time + data.lifeTime;
-            m_ownerLayer = p_ownerLayer;
+            m_ownerTag = p_ownerTag;
         }
 
 
         private void Update()
         {
-            transform.position += m_dir * (data.speed * Time.deltaTime);
+            transform.position += transform.forward * (data.speed * Time.deltaTime);
 
             if (m_lifeTime < Time.time)
             {
@@ -39,15 +39,17 @@ namespace _Main._main.Scripts.Guns
 
         private void OnTriggerEnter(Collider p_other)
         {
-            if (m_ownerLayer == p_other.gameObject.layer)
+            if (p_other.gameObject.CompareTag(m_ownerTag))
                 return;
             
             if (p_other.TryGetComponent(out IHealthController l_controller))
             {
                 l_controller.DoDamage(data.damage);
             }
+            
             gameObject.SetActive(false);
             GameManager.Instance.ReturnBulletToPool(this);
         }
+        
     }
 }

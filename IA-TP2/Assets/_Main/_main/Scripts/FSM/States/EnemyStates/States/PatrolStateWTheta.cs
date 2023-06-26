@@ -9,8 +9,8 @@ using UnityEngine;
 
 namespace _Main._main.Scripts.FSM.States.EnemyStates.States
 {
-    [CreateAssetMenu(fileName = "PatrolStateWaStar", menuName = "_main/States/EnemyStates/PatrolStateWaStar", order = 0)]
-    public class PatrolStateWAstar : State
+    [CreateAssetMenu(fileName = "PatrolStateWTheta", menuName = "_main/States/EnemyStates/PatrolStateWTheta", order = 0)]
+    public class PatrolStateWTheta : State
     {
         [SerializeField] private LayerMask maskObs;
         private class PatrolData
@@ -86,7 +86,6 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
             }
 
             p_model.Move(l_data.Path[l_data.PathPointCount].WorldPos, p_model.GetData().WalkSpeed);
-            p_model.LookAt(l_data.Path[l_data.PathPointCount].WorldPos);
         }
 
         public override void ExitState(EnemyModel p_model)
