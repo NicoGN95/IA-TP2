@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23918fe850d47cc4ebb696e0867d997a, type: 3}
   m_Name: TakeCoverState
   m_EditorClassIdentifier: 
-  <State>k__BackingField: {fileID: 11400000, guid: ee1f1a381fde90649aaa182e308a0209, type: 2}
+  <State>k__BackingField: {fileID: 11400000, guid: d5997c43ad880c746aa0e9dd2d875d88, type: 2}
   <StateConditions>k__BackingField:
   - {fileID: 11400000, guid: f0eadef5fbceb474db29265023cf16b1, type: 2}
   <ExitStates>k__BackingField:

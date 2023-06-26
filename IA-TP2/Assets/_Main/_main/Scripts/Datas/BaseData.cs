@@ -6,5 +6,8 @@ namespace _Main._main.Scripts.Datas
     {
         [field: Header("Stats")]
         [field : SerializeField] public float MaxHealth { get; private set; }
+        [field : SerializeField] public string Tag { get; private set; }
+        
+        
     }
 }

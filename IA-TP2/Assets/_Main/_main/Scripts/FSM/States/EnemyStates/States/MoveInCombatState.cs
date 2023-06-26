@@ -15,6 +15,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
 
         public override void EnterState(EnemyModel p_model)
         {
+            Debug.Log("Move");
             var l_rndVector = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
             m_datas[p_model] = l_rndVector + p_model.transform.position;
             
@@ -27,7 +28,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
 
         public override void ExecuteState(EnemyModel p_model)
         {
-            p_model.Move(m_datas[p_model], p_model.GetData().CombatMovementSpeed);
+            p_model.MoveInCombat(m_datas[p_model], p_model.GetData().CombatMovementSpeed);
             p_model.LookAt(p_model.LastKnownTargetLocation);
         }
 

@@ -53,7 +53,6 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
             }
 
             p_model.Move(m_patrolDatas[p_model].TargetPatrolPoint, p_model.GetData().WalkSpeed);
-            p_model.LookAt(m_patrolDatas[p_model].TargetPatrolPoint);
         }
 
         public override void ExitState(EnemyModel p_model)

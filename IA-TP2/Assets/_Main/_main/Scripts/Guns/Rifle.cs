@@ -13,7 +13,7 @@ namespace _Main._main.Scripts.Guns
         private GameManager m_gameManager;
         private int m_bullCount;
         private float m_shotCooldown;
-        private LayerMask m_ownLayer;
+        private string m_ownTag;
         private void Start()
         {
             m_gameManager = GameManager.Instance;
@@ -21,11 +21,11 @@ namespace _Main._main.Scripts.Guns
             m_bullCount = data.maxBullCount;
         }
 
-        public void Equip(Transform p_parent, LayerMask p_ownerLayer)
+        public void Equip(Transform p_parent, string p_ownerTag)
         {
             transform.position = p_parent.position;
             transform.parent = p_parent;
-            m_ownLayer = p_ownerLayer;
+            m_ownTag = p_ownerTag;
         }
         public void PlayerShoot()
         {
@@ -43,7 +43,7 @@ namespace _Main._main.Scripts.Guns
 
             if (!Physics.Raycast(camera.ScreenPointToRay(l_cameraCenter), out var l_hit))
             {
-                l_bull.Initialize(l_transform.position, camera.transform.forward, m_ownLayer);
+                l_bull.Initialize(l_transform.position, camera.transform.forward, m_ownTag);
                 m_shotCooldown = data.fireRate + Time.time;
                 return;
             }
@@ -51,7 +51,7 @@ namespace _Main._main.Scripts.Guns
             var l_position = l_transform.position;
             var l_dir = (l_hit.point - l_position).normalized;
 
-            l_bull.Initialize(l_position, l_dir, m_ownLayer);
+            l_bull.Initialize(l_position, l_dir, m_ownTag);
             m_shotCooldown = data.fireRate + Time.time;
         }
 
@@ -60,7 +60,7 @@ namespace _Main._main.Scripts.Guns
             var l_bull= m_gameManager.GetBulletFromPool();
             var l_transform = shootPoint.transform;
             
-            l_bull.Initialize(l_transform.position, p_dir, m_ownLayer);
+            l_bull.Initialize(l_transform.position, p_dir, m_ownTag);
         }
         
         public void Reload()

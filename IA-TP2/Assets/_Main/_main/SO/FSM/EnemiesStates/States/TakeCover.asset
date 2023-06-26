@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cdeedf5c02c455683e59c74bad5f839, type: 3}
   m_Name: TakeCover
   m_EditorClassIdentifier: 
+  coverMask:
+    serializedVersion: 2
+    m_Bits: 3072

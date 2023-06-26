@@ -15,5 +15,7 @@ MonoBehaviour:
   <State>k__BackingField: {fileID: 11400000, guid: eed1bbed7424c55468d8adb4125887bd, type: 2}
   <StateConditions>k__BackingField:
   - {fileID: 11400000, guid: c610a469cca675648a6ccb220c6491c2, type: 2}
+  - {fileID: 11400000, guid: e1a0ec47cee55d64e9c92211e54ce781, type: 2}
   <ExitStates>k__BackingField:
   - {fileID: 11400000, guid: 14b521cf96db64743aa62973f7e72c72, type: 2}
+  - {fileID: 11400000, guid: b5241b008de127b4c94005178b4e28e1, type: 2}
