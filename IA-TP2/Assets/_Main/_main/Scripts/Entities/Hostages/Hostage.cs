@@ -10,6 +10,12 @@ namespace _Main._main.Scripts.Entities.Hostages
         [SerializeField] private float rotSpeed;
         [SerializeField] private float radius;
         [SerializeField] private float stoppingDistance;
+        [SerializeField] private LayerMask obsMask;
+        [SerializeField] private float obsRadius;
+        [SerializeField] private float behaviorIntensity;
+
+
+        private HostageObsAvoidance m_obstacleAvoidance;
 
         private Leader m_leader;
         private bool isFollowing = false;
@@ -18,6 +24,8 @@ namespace _Main._main.Scripts.Entities.Hostages
         {
             _rb = GetComponent<Rigidbody>();
             m_leader = GetComponent<Leader>();
+
+            m_obstacleAvoidance = new HostageObsAvoidance(5, obsMask, transform, obsRadius, behaviorIntensity);
         }
         public Vector3 Position => transform.position;
 
@@ -29,20 +37,22 @@ namespace _Main._main.Scripts.Entities.Hostages
         {
             if (!isFollowing)
                 return;
+
+            var l_dir = m_obstacleAvoidance.GetDir(transform.position + dir);
             
             float distanceToTarget = Vector3.Distance(transform.position, m_leader.target.position);
 
             if (distanceToTarget <= stoppingDistance)
             {
-                dir = Vector3.zero;
+                l_dir = Vector3.zero;
             }
             else
             {
-                dir *= speed;
+                l_dir *= speed;
             }
             
-            dir.y = _rb.velocity.y;
-            _rb.velocity = dir;
+            l_dir.y = _rb.velocity.y;
+            _rb.velocity = l_dir;
         }
         public void LookDir(Vector3 dir)
         {

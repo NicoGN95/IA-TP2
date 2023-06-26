@@ -274,6 +274,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: obsRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: obsMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: stoppingDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: behaviorIntensity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1907320252490792424, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
       propertyPath: m_Name
       value: Hostage (2)
@@ -340,7 +360,7 @@ GameObject:
   - component: {fileID: 170428365}
   - component: {fileID: 170428364}
   - component: {fileID: 170428363}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1365,6 +1385,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: obsRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: obsMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: stoppingDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: behaviorIntensity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1907320252490792424, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
       propertyPath: m_Name
       value: Hostage (1)
@@ -3080,8 +3120,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: obsRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: obsMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
       propertyPath: stoppingDistance
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 912718002070044292, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
+      propertyPath: behaviorIntensity
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1907320252490792424, guid: 3ca859ee4ad89d146b9001b2648819cb, type: 3}
       propertyPath: m_Name
