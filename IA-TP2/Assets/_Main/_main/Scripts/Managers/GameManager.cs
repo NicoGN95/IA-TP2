@@ -10,7 +10,7 @@ namespace _Main._main.Scripts.Managers
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-        public MyGrid grid;
+        [HideInInspector] public MyGrid grid;
 
         [SerializeField] private string loadSceneName;
         [SerializeField] private Bullet bulletPrefab;
@@ -49,6 +49,7 @@ namespace _Main._main.Scripts.Managers
         public void SetLocalPlayer(PlayerModel p_newLocalPlayer) => m_localPlayer = p_newLocalPlayer;
         public void SetNextSceneToLoad(string p_nameScene) => m_nextSceneToLoad = p_nameScene;
 
+        public void SetGrid(MyGrid p_grid) => grid = p_grid;
         #endregion
 
         #region Functions

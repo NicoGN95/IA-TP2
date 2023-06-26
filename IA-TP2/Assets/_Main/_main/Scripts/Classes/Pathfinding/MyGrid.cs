@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _Main._main.Scripts.Managers;
 using UnityEngine;
 
 namespace _Main._main.Scripts.Classes.Pathfinding
@@ -59,6 +60,7 @@ namespace _Main._main.Scripts.Classes.Pathfinding
         [ContextMenu("GenerateGrid")]
         private void Initialize()
         {
+            GameManager.Instance.SetGrid(this);
             m_nodeDiameter = nodeRadius*2;
             m_gridSizeX = Mathf.RoundToInt(gridworldSize.x/m_nodeDiameter);
             m_gridSizeY = Mathf.RoundToInt(gridworldSize.y/m_nodeDiameter);
