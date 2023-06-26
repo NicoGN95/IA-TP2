@@ -17,7 +17,9 @@ namespace _Main._main.Scripts.Datas
         [field: SerializeField] public PlayerInputData InputData { get; private set; }
 
         [field: SerializeField] public List<PlayerState> States { get; private set; }
-        
+        [field: SerializeField] public LayerMask InteractLayerMask { get; private set; }
+
+        [field: SerializeField] public float InteractRadius { get; private set; }
         
     }
 }

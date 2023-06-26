@@ -18,3 +18,5 @@ MonoBehaviour:
   <CameraMovementId>k__BackingField: CameraMovement
   <AimId>k__BackingField: Aim
   <JumpId>k__BackingField: Jump
+  <InteractId>k__BackingField: Interact
+  <HUDId>k__BackingField: HUD

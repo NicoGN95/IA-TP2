@@ -24,6 +24,7 @@ namespace _Main._main.Scripts.FSM.States.PlayerStates.States
             l_inputManager.SubscribeInput(Model.GetPlayerInputData().MovementId, MovementOnPerformed);
             l_inputManager.SubscribeInput(Model.GetPlayerInputData().ShootId, ShootOnPerformed);
             l_inputManager.SubscribeInput(Model.GetPlayerInputData().ReloadId, ReloadOnPerformed);
+            l_inputManager.SubscribeInput(Model.GetPlayerInputData().InteractId, InteractOnPerformed);
 
         }
 
@@ -41,6 +42,11 @@ namespace _Main._main.Scripts.FSM.States.PlayerStates.States
         {
             if (Model.CheckGround())
                 m_dir = p_obj.ReadValue<Vector2>().X0Z();
+        }
+        
+        private void InteractOnPerformed(InputAction.CallbackContext p_obj)
+        {
+            Model.Interact();
         }
        
         

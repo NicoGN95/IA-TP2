@@ -25,7 +25,7 @@ namespace _Main._main.Scripts.Guns
             transform.position = p_parent.position;
             transform.parent = p_parent;
         }
-        public void Shoot(Vector3 p_endPoint)
+        public void Shoot()
         {
             if(m_bullCount <= 0)
                 return;
@@ -36,9 +36,20 @@ namespace _Main._main.Scripts.Guns
             var l_bull= m_gameManager.GetBulletFromPool();
             var l_transform = shootPoint.transform;
             
-            var l_dir = (p_endPoint - l_transform.position).normalized;
+            var camera = Camera.main;
+            var l_cameraCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
 
-            l_bull.Initialize(l_transform.position, l_dir);
+            if (!Physics.Raycast(camera.ScreenPointToRay(l_cameraCenter), out var l_hit))
+            {
+                l_bull.Initialize(l_transform.position, camera.transform.forward);
+                m_shotCooldown = data.fireRate + Time.time;
+                return;
+            }
+
+            var l_position = l_transform.position;
+            var l_dir = (l_hit.point - l_position).normalized;
+
+            l_bull.Initialize(l_position, l_dir);
             m_shotCooldown = data.fireRate + Time.time;
         }
 
