@@ -1,4 +1,5 @@
 ﻿using _Main._main.Scripts.Classes;
+using _Main._main.Scripts.Classes.Pathfinding;
 using UnityEditor;
 using UnityEngine;
 

@@ -2268,6 +2268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c95b4d8552247e4797f8544a0eab5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grid: {fileID: 0}
   loadSceneName: 
   bulletPrefab: {fileID: 7119607321484250401, guid: 4722f9de128abc54f8cb579aa4a28870, type: 3}
   changePlayer: {fileID: 7531165016541027251}
@@ -2932,14 +2933,6 @@ PrefabInstance:
       propertyPath: cameraManagerTransform
       value: 
       objectReference: {fileID: 99851011}
-    - target: {fileID: 7531165016541027255, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 7531165016541027255, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
 --- !u!114 &7531165016541027251 stripped

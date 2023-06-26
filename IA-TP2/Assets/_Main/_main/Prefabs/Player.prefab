@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 219667653}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CheckGround
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1380243038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CameraPivot
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2057203016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 206852077130042004}
   - component: {fileID: 27890036526997110}
   - component: {fileID: 5929833626591352691}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 7531165016541027252}
   - component: {fileID: 7531165016541027255}
   - component: {fileID: 7133660172255408378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -275,8 +275,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
+  m_Constraints: 116
+  m_CollisionDetection: 1
 --- !u!136 &7133660172255408378
 CapsuleCollider:
   m_ObjectHideFlags: 0

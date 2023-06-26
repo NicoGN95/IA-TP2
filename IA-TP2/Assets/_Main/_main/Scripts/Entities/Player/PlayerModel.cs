@@ -33,7 +33,7 @@ namespace _Main._main.Scripts.Entities.Player
             return Physics.CheckSphere(checkGroundPosition.position, 0.1f, data.CheckGroundMask);
         }
 
-        public void Shoot() => gun.Shoot();
+        public void Shoot() => gun.PlayerShoot();
         public void ReloadGun() => gun.Reload();
 
         public float GetCameraRotationY() => cameraManagerTransform.eulerAngles.y;

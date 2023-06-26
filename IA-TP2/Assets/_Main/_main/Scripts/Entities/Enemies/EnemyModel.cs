@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using _Main._main.Scripts.Classes;
+using _Main._main.Scripts.Classes.Pathfinding;
 using _Main._main.Scripts.Classes.SteeringBhb;
 using _Main._main.Scripts.Datas;
 using _Main._main.Scripts.FSM.Base;
+using _Main._main.Scripts.Guns;
 using _Main._main.Scripts.Managers;
-using _Main._main.Scripts.zzz;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace _Main._main.Scripts.Entities.Enemies
@@ -13,6 +13,7 @@ namespace _Main._main.Scripts.Entities.Enemies
     public class EnemyModel : BaseModel
     {
         [SerializeField] private EnemyData data;
+        [SerializeField] private Transform gunPivot;
         public EnemyView View{ get; private set; }
         public WaypointClass PatrolPoints{ get; private set; }
         public Vector3 LastKnownTargetLocation { get; private set; }
@@ -23,7 +24,7 @@ namespace _Main._main.Scripts.Entities.Enemies
         private Transform m_targetTransform;
         private RouletteWheel<State> m_CombatRoulette;
         private State m_combatState;
-
+        private Rifle m_gun;
         private float m_timeToEndAlert;
 
 
@@ -38,28 +39,34 @@ namespace _Main._main.Scripts.Entities.Enemies
             m_CombatRoulette = new RouletteWheel<State>(data.CombatStates, data.CombatStatesChances);
             SbController = new SbController(this, data.PursuitTime);
             m_obstacleAvoidance = new ObstacleAvoidance(this);
+
+            m_gun = Instantiate(data.GunPrefab);
+            m_gun.Equip(gunPivot);
+        
         }
 
 
-        public void Move(Vector3 p_direction, float p_speed)
+        public void Move(Vector3 p_destination, float p_speed)
         {
             //TODO: Que todo movimiento sea gradual y por rigidbody, que no pase del 0% al 100% del movimiento
-            var l_dir = m_obstacleAvoidance.GetDir(p_direction) + SbController.CurrSb.GetDir();
+            var l_dir = m_obstacleAvoidance.GetDir(p_destination) + SbController.CurrSb.GetDir();
             l_dir.y = 0;
             m_rb.velocity = l_dir * p_speed;
             View.PlayMovementAnimation(m_rb.velocity.magnitude);
+        }
+
+        public void LookAt(Vector3 p_pointToLook)
+        {
+            var l_dir = (p_pointToLook - transform.position).normalized;
+            l_dir.y = 0;
             transform.forward = Vector3.Lerp(transform.forward, l_dir, 0.2f);
         }
-        
 
         #region Combat
 
         private float m_timeToFinishAction;
 
-        public void Shoot()
-        {
-            
-        }
+        public void Shoot(Vector3 p_dir) => m_gun.ShootToDir(p_dir);
         public void ActivateCombatMode()
         {
             View.SetCombatAnimation(true);

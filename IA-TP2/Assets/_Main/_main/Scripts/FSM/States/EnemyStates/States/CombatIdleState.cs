@@ -34,11 +34,8 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
             p_model.SbController.SetZeroSb();
             p_model.ActivateCombatMode();
         }
-
-        
         public override void ExecuteState(EnemyModel p_model)
         {
-            p_model.Move(Vector3.zero, 0f);
             if (m_timerDictionary[p_model].CombatTimer < Time.time)
             {
                 EventService.DispatchEvent(new ChangeEnemyStateCustomEventData(p_model, m_timerDictionary[p_model].CombatState.GetType()));

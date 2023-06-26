@@ -3,7 +3,7 @@ using _Main._main.Scripts.Entities.Enemies;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace _Main._main.Scripts.Classes
+namespace _Main._main.Scripts.Classes.Pathfinding
 {
     public class ObstacleAvoidance
     {

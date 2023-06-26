@@ -13,9 +13,9 @@ TagManager:
   - UI
   - Floor
   - Interactable
-  - 
-  - 
-  - 
+  - Player
+  - Enemies
+  - Obs
   - 
   - 
   - 

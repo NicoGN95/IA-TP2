@@ -15,24 +15,20 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
 
         public override void EnterState(EnemyModel p_model)
         {
-            var l_rndVector = new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
-            m_datas[p_model] = l_rndVector.normalized;
+            var l_rndVector = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+            m_datas[p_model] = l_rndVector + p_model.transform.position;
             
-            
-            var l_rnd = Random.Range(p_model.GetData().MoveInCombatTimeRange[0],
+            var l_rndTimer = Random.Range(p_model.GetData().MoveInCombatTimeRange[0],
                 p_model.GetData().MoveInCombatTimeRange[1]);
             
             p_model.SbController.SetZeroSb();
-            p_model.SetTimeToEndAction(l_rnd);
-            
-            //Seleccionar la direccion del movimiento respecto al enemigo
-            // izq, der, adelante, atras
+            p_model.SetTimeToEndAction(l_rndTimer);
         }
 
         public override void ExecuteState(EnemyModel p_model)
         {
-            //Mover al enemy en la direccion deseada mientras esta mirando al player
-            p_model.Move(m_datas[p_model].normalized, p_model.GetData().CombatMovementSpeed);
+            p_model.Move(m_datas[p_model], p_model.GetData().CombatMovementSpeed);
+            p_model.LookAt(p_model.LastKnownTargetLocation);
         }
 
         public override void ExitState(EnemyModel p_model)

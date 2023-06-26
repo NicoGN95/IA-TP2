@@ -52,10 +52,8 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
                 m_patrolDatas[p_model].WaitTime = p_model.GetData().WaitPatrolTime;
             }
 
-            var l_dir = (m_patrolDatas[p_model].TargetPatrolPoint - p_model.transform.position).normalized;
-            
-            p_model.Move(l_dir, p_model.GetData().WalkSpeed);
-            
+            p_model.Move(m_patrolDatas[p_model].TargetPatrolPoint, p_model.GetData().WalkSpeed);
+            p_model.LookAt(m_patrolDatas[p_model].TargetPatrolPoint);
         }
 
         public override void ExitState(EnemyModel p_model)

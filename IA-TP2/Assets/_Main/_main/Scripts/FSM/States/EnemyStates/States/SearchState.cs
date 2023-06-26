@@ -18,6 +18,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
             public Vector3 Target;
             public float WaitTime;
         }
+        
         private Dictionary<EnemyModel, SearchData> m_dictionary = new Dictionary<EnemyModel, SearchData>();
         
         public override void EnterState(EnemyModel p_model)
@@ -42,7 +43,6 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
                 
                 m_dictionary[p_model].WaitTime = 5;
                 
-                //Todo, este random deveria ser un random de la grilla
                 Vector3 l_rndVector = new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
                 m_dictionary[p_model].Target = l_rndVector;
             }

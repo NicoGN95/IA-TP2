@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 100
   <WalkSpeed>k__BackingField: 5
-  <RunSpeed>k__BackingField: 10
-  <CombatMovementSpeed>k__BackingField: 15
+  <RunSpeed>k__BackingField: 6
+  <CombatMovementSpeed>k__BackingField: 8
   <AllStatesData>k__BackingField:
   - {fileID: 11400000, guid: 217d78b8050ecbc43a317cb0edaa7113, type: 2}
   - {fileID: 11400000, guid: 14b521cf96db64743aa62973f7e72c72, type: 2}
@@ -24,7 +24,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1f1ed8d31b4360c47a913efc2b91cd50, type: 2}
   - {fileID: 11400000, guid: 3f3d3ac74b295434fac6349a03d24fe6, type: 2}
   - {fileID: 11400000, guid: 7fa9dce32027aaa4b9e1587c803109fe, type: 2}
+  <GunPrefab>k__BackingField: {fileID: 2653730230711244726, guid: 8306ea0f829147746ba3f70e5fe3a5af, type: 3}
   <CombatRange>k__BackingField: 10
+  <Spread>k__BackingField: 25
+  <ShotsPerRound>k__BackingField: 5
+  <TimeBtwRounds>k__BackingField: 2
   <CombatStates>k__BackingField:
   - {fileID: 11400000, guid: 8caceff7fb21d9146b5f9b81f746b63d, type: 2}
   - {fileID: 11400000, guid: 300e40f2de7bbbc4e944e066ab5fb2d0, type: 2}
@@ -32,7 +36,7 @@ MonoBehaviour:
   <CombatStatesChances>k__BackingField:
   - 60
   - 20
-  - 2000
+  - 20
   <CombatActionTimerRange>k__BackingField:
   - 0.5
   - 2
@@ -43,9 +47,9 @@ MonoBehaviour:
   <ViewDegrees>k__BackingField: 100
   <SearchTime>k__BackingField: 15
   <WaitPatrolTime>k__BackingField: 1
-  <PursuitTime>k__BackingField: 0
-  <ShootTime>k__BackingField: 0
-  <TakeCoverTime>k__BackingField: 0
+  <PursuitTime>k__BackingField: 1.5
+  <ShootTime>k__BackingField: 6
+  <TakeCoverTime>k__BackingField: 5
   <OwnerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 512

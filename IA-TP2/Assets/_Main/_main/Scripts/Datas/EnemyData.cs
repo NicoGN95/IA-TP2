@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Main._main.Scripts.FSM.Base;
+using _Main._main.Scripts.Guns;
 using UnityEngine;
 
 namespace _Main._main.Scripts.Datas
@@ -20,7 +21,11 @@ namespace _Main._main.Scripts.Datas
         
         [field: Header("Combat")]
         
+        [field : SerializeField] public Rifle GunPrefab { get; private set; }
         [field : SerializeField] public float CombatRange { get; private set; }
+        [field : SerializeField] public float Spread { get; private set; }
+        [field : SerializeField] public int ShotsPerRound { get; private set; }
+        [field : SerializeField] public float TimeBtwRounds { get; private set; }
         [field : SerializeField] public List<State> CombatStates { get; private set; }
         [field : SerializeField] public List<float> CombatStatesChances { get; private set; }
         [field : SerializeField] public float[] CombatActionTimerRange { get; private set; }

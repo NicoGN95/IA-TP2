@@ -25,7 +25,7 @@ namespace _Main._main.Scripts.Guns
             transform.position = p_parent.position;
             transform.parent = p_parent;
         }
-        public void Shoot()
+        public void PlayerShoot()
         {
             if(m_bullCount <= 0)
                 return;
@@ -53,6 +53,14 @@ namespace _Main._main.Scripts.Guns
             m_shotCooldown = data.fireRate + Time.time;
         }
 
+        public void ShootToDir(Vector3 p_dir)
+        {
+            var l_bull= m_gameManager.GetBulletFromPool();
+            var l_transform = shootPoint.transform;
+            
+            l_bull.Initialize(l_transform.position, p_dir);
+        }
+        
         public void Reload()
         {
             m_bullCount = data.maxBullCount;

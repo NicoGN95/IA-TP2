@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-namespace _Main._main.Scripts.Classes
+namespace _Main._main.Scripts.Classes.Pathfinding
 {
     [System.Serializable]
     public class WaypointClass : MonoBehaviour

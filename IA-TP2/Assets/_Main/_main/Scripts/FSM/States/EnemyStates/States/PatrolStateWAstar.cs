@@ -20,7 +20,6 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
             public List<MyNode> PatrolNodes;
             public int PatrolCount;
             public List<MyNode> Path;
-            public MyNode TargetNode;
         }
         
         
@@ -29,25 +28,23 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
         {
             p_model.SbController.SetZeroSb();
 
-
             m_patrolDatas[p_model] = new PatrolData();
-            m_patrolDatas[p_model].PatrolNodes = new List<MyNode>();
-            m_patrolDatas[p_model].PathPointCount = 0;
-            m_patrolDatas[p_model].PatrolCount = 0;
-            m_patrolDatas[p_model].WaitTime = p_model.GetData().WaitPatrolTime;
+            var l_data = m_patrolDatas[p_model];
+            l_data.PatrolNodes = new List<MyNode>();
+            l_data.PathPointCount = 0;
+            l_data.PatrolCount = 0;
+            l_data.WaitTime = p_model.GetData().WaitPatrolTime;
             
             
             var l_grid = GameManager.Instance.grid;
             
             for (int l_i = 0; l_i < p_model.PatrolPoints.Lenght; l_i++)
             {
-                m_patrolDatas[p_model].PatrolNodes.Add(l_grid.NodeFromWorldPoint(p_model.PatrolPoints.points[l_i]));
+                l_data.PatrolNodes.Add(l_grid.NodeFromWorldPoint(p_model.PatrolPoints.points[l_i]));
             }
 
             var l_closestNodeToEnemy = l_grid.NodeFromWorldPoint(p_model.transform.position);
             SetPathToNextWaypoint(p_model, l_closestNodeToEnemy, 0);
-
-            m_patrolDatas[p_model].TargetNode = m_patrolDatas[p_model].Path[0];
 
         }
 
@@ -83,15 +80,13 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
                     }
                     
                     SetPathToNextWaypoint(p_model, l_closestNodeToEnemy, l_data.PatrolCount);
-                    l_data.TargetNode = l_data.Path[0];
                     l_data.WaitTime = p_model.GetData().WaitPatrolTime;
                     l_data.PathPointCount = 0;
-                    
                 }
             }
 
             p_model.Move(l_data.Path[l_data.PathPointCount].WorldPos, p_model.GetData().WalkSpeed);
-            
+            p_model.LookAt(l_data.Path[l_data.PathPointCount].WorldPos);
         }
 
         public override void ExitState(EnemyModel p_model)

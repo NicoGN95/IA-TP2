@@ -19,8 +19,8 @@ MonoBehaviour:
   <CheckGroundMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
-  <OwnerMask>k__BackingField: 0
-  <EnemiesMask>k__BackingField: 0
+  <OwnerMask>k__BackingField: 8
+  <EnemiesMask>k__BackingField: 9
   <InputData>k__BackingField: {fileID: 11400000, guid: c8982453e64bbae49ab9d49c1a47699e, type: 2}
   <States>k__BackingField:
   - {fileID: 11400000, guid: b9873cc2396770f44b62c60a17f030c1, type: 2}

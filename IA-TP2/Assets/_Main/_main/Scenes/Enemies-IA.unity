@@ -227,6 +227,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 219667653, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3550469984052466505, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
       propertyPath: m_Name
       value: Player
@@ -237,15 +241,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6852064234233524310, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.3006
+      value: 14.18
       objectReference: {fileID: 0}
     - target: {fileID: 6852064234233524310, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 1.72
       objectReference: {fileID: 0}
     - target: {fileID: 6852064234233524310, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 42.71895
+      value: 9.39
       objectReference: {fileID: 0}
     - target: {fileID: 6852064234233524310, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -279,6 +283,10 @@ PrefabInstance:
       propertyPath: gun
       value: 
       objectReference: {fileID: 1294066259}
+    - target: {fileID: 7531165016541027251, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
+      propertyPath: cameraManagerTransform
+      value: 
+      objectReference: {fileID: 275393540}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
 --- !u!4 &275393540 stripped
@@ -286,6 +294,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1380243038, guid: 27fdd47db8c280641b7fdb1cbb2650bf, type: 3}
   m_PrefabInstance: {fileID: 275393539}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &294924952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 294924953}
+  m_Layer: 9
+  m_Name: GunPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &294924953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294924952}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.257, y: 1.111, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 704405027}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &437201407
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +337,7 @@ GameObject:
   - component: {fileID: 437201410}
   - component: {fileID: 437201409}
   - component: {fileID: 437201408}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: obs (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,10 +568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: 41fe0ad3778d567419a3203aaecaff2f, type: 2}
   data: {fileID: 11400000, guid: 41fe0ad3778d567419a3203aaecaff2f, type: 2}
-  obsLayer:
-    serializedVersion: 2
-    m_Bits: 1152
-  ObsAvoidanceMult: 2
+  gunPivot: {fileID: 294924953}
 --- !u!114 &704405026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,6 +595,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1608338271}
+  - {fileID: 294924953}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -623,7 +660,7 @@ GameObject:
   - component: {fileID: 732985345}
   - component: {fileID: 732985344}
   - component: {fileID: 732985343}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: obs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -817,7 +854,7 @@ GameObject:
   - component: {fileID: 950957401}
   - component: {fileID: 950957400}
   - component: {fileID: 950957399}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: obs (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1720,7 +1757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 1735300172}
-  defaultActionMap: 
+  defaultActionMap: PlayerInput
 --- !u!114 &1735300175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1733,6 +1770,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a49446a604b3b4e9661dfd154af66e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstObjectiveText: {fileID: 0}
+  secondObjectiveText: {fileID: 0}
+  thirdObjectiveText: {fileID: 0}
+  objectiveBox: {fileID: 0}
+  weaponIcon: {fileID: 0}
+  interactPrompt: {fileID: 0}
+  messagePanel: {fileID: 0}
+  messageText: {fileID: 0}
+  displayTime: 5
 --- !u!1 &1874997689
 GameObject:
   m_ObjectHideFlags: 0

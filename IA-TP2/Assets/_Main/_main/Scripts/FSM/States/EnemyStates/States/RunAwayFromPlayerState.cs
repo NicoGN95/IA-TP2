@@ -7,6 +7,7 @@ namespace _Main._main.Scripts.FSM.States.EnemyStates.States
     [CreateAssetMenu(fileName = "RunAwayFromPlayerState", menuName = "_main/States/EnemyStates/RunAwayFromPlayerState", order = 0)]
     public class RunAwayFromPlayerState : State
     {
+        
         public override void EnterState(EnemyModel p_model)
         {
             p_model.SbController.SetFleeSb();
