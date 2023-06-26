@@ -13,8 +13,6 @@ namespace _Main._main.Scripts.Entities.Enemies
     public class EnemyModel : BaseModel
     {
         [SerializeField] private EnemyData data;
-        [SerializeField] private LayerMask obsLayer;
-        [SerializeField] private float ObsAvoidanceMult;
         public EnemyView View{ get; private set; }
         public WaypointClass PatrolPoints{ get; private set; }
         public Vector3 LastKnownTargetLocation { get; private set; }
@@ -52,20 +50,6 @@ namespace _Main._main.Scripts.Entities.Enemies
             View.PlayMovementAnimation(m_rb.velocity.magnitude);
             transform.forward = Vector3.Lerp(transform.forward, l_dir, 0.2f);
         }
-
-
-        #region Pathfinding
-
-        private List<Vector3> m_pathPoints = new List<Vector3>();
-        public void SetWayPoints(List<Node> p_newPoints)
-        {
-            foreach (var l_node in p_newPoints)
-            {
-                m_pathPoints.Add(l_node.transform.position);
-            }
-        }
-
-        #endregion
         
 
         #region Combat

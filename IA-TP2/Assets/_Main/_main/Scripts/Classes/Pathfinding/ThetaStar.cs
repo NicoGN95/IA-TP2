@@ -1,60 +1,59 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace _Main._main.Scripts.Classes.Pathfinding
 {
-    public class ThetaStar<T>
+    public static class ThetaStar
     {
-        public List<T> Run(T start,
-            Func<T, bool> satiesfies,
-            Func<T, List<T>> conections,
-            Func<T, T, float> getCost,
-            Func<T, float> heuristic,
-            Func<T, T, bool> inView,
-            int watchdog = 100)
+        public static List<T> Run<T>(T p_start, T p_target,
+            Func<T, T, bool> p_satisfies,
+            Func<T, List<T>> p_connections,
+            Func<T, T, float> p_getCost,
+            Func<T,T, float> p_heuristic,
+            Func<T, T, bool> p_inView,
+            int p_watchdog = 2000)
         {
-            PriorityQueue<T> pending = new PriorityQueue<T>();
-            HashSet<T> visited = new HashSet<T>();
-            Dictionary<T, T> parent = new Dictionary<T, T>();
-            Dictionary<T, float> cost = new Dictionary<T, float>();
+            PriorityQueue<T> l_pending = new PriorityQueue<T>();
+            HashSet<T> l_visited = new HashSet<T>();
+            Dictionary<T, T> l_parent = new Dictionary<T, T>();
+            Dictionary<T, float> l_cost = new Dictionary<T, float>();
 
-            pending.Enqueue(start, 0);
-            cost[start] = 0;
+            l_pending.Enqueue(p_start, 0);
+            l_cost[p_start] = 0;
 
-            while (watchdog > 0 && !pending.IsEmpty)
+            while (p_watchdog > 0 && !l_pending.IsEmpty)
             {
-                watchdog--;
-                var curr = pending.Dequeue();
-                Debug.Log("THETA");
-                if (satiesfies(curr))
+                p_watchdog--;
+                var l_curr = l_pending.Dequeue();
+                
+                if (p_satisfies(l_curr, p_target))
                 {
-                    var path = new List<T>();
-                    path.Add(curr);
-                    while (parent.ContainsKey(path[path.Count - 1]))
+                    var l_path = new List<T>();
+                    l_path.Add(l_curr);
+                    while (l_parent.ContainsKey(l_path[l_path.Count - 1]))
                     {
-                        var father = parent[path[path.Count - 1]];
-                        path.Add(father);
+                        var l_father = l_parent[l_path[l_path.Count - 1]];
+                        l_path.Add(l_father);
                     }
-                    path.Reverse();
-                    return path;
+                    l_path.Reverse();
+                    return l_path;
                 }
-                visited.Add(curr);
-                var neighbours = conections(curr);
-                for (int i = 0; i < neighbours.Count; i++)
+                l_visited.Add(l_curr);
+                var l_neighbours = p_connections(l_curr);
+                for (int l_i = 0; l_i < l_neighbours.Count; l_i++)
                 {
-                    var neigh = neighbours[i];
-                    if (visited.Contains(neigh)) continue;
-                    T realParent = curr;
-                    if (parent.ContainsKey(curr) && inView(parent[curr], neigh))
+                    var l_neigh = l_neighbours[l_i];
+                    if (l_visited.Contains(l_neigh)) continue;
+                    T l_realParent = l_curr;
+                    if (l_parent.ContainsKey(l_curr) && p_inView(l_parent[l_curr], l_neigh))
                     {
-                        realParent = parent[curr];
+                        l_realParent = l_parent[l_curr];
                     }
-                    float tentativeCost = cost[realParent] + getCost(realParent, neigh);
-                    if (cost.ContainsKey(neigh) && cost[neigh] < tentativeCost) continue;
-                    pending.Enqueue(neigh, tentativeCost + heuristic(neigh));
-                    parent[neigh] = realParent;
-                    cost[neigh] = tentativeCost;
+                    float l_tentativeCost = l_cost[l_realParent] + p_getCost(l_realParent, l_neigh);
+                    if (l_cost.ContainsKey(l_neigh) && l_cost[l_neigh] < l_tentativeCost) continue;
+                    l_pending.Enqueue(l_neigh, l_tentativeCost + p_heuristic(l_neigh, p_target));
+                    l_parent[l_neigh] = l_realParent;
+                    l_cost[l_neigh] = l_tentativeCost;
                 }
             }
             return new List<T>();
