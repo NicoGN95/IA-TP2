@@ -11,7 +11,8 @@ namespace _Main._main.Scripts.Guns
         [SerializeField] private BulletData data;
         private Vector3 m_dir;
         private float m_lifeTime;
-        public void Initialize(Vector3 p_initPos, Vector3 p_initDir)
+        private LayerMask m_ownerLayer;
+        public void Initialize(Vector3 p_initPos, Vector3 p_initDir, LayerMask p_ownerLayer)
         {
             gameObject.SetActive(true);
             transform.position = p_initPos;
@@ -20,6 +21,7 @@ namespace _Main._main.Scripts.Guns
             transform.forward = m_dir;
 
             m_lifeTime = Time.time + data.lifeTime;
+            m_ownerLayer = p_ownerLayer;
         }
 
 
@@ -35,9 +37,12 @@ namespace _Main._main.Scripts.Guns
         }
 
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider p_other)
         {
-            if (other.TryGetComponent(out IHealthController l_controller))
+            if (m_ownerLayer == p_other.gameObject.layer)
+                return;
+            
+            if (p_other.TryGetComponent(out IHealthController l_controller))
             {
                 l_controller.DoDamage(data.damage);
             }

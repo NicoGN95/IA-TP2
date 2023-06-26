@@ -29,7 +29,7 @@ namespace _Main._main.Scripts.Managers
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            SetLocalPlayer(changePlayer);
+            
 
 
             m_poolBullet = new PoolBullet(bulletPrefab);
@@ -60,7 +60,8 @@ namespace _Main._main.Scripts.Managers
         
         #endregion
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
+        
         [SerializeField] private PlayerModel changePlayer;
 
         [ContextMenu("ForceChangeLocalPlayer")]
@@ -68,6 +69,6 @@ namespace _Main._main.Scripts.Managers
         {
             m_localPlayer = changePlayer;
         }
-#endif
+        #endif
     }
 }

@@ -7,18 +7,23 @@ namespace _Main._main.Scripts.Entities
     public class BaseModel : MonoBehaviour, IHealthController
     {
         [SerializeField] private BaseData baseData;
-        private HealthController m_healthController;
+        public HealthController m_healthController;
         private Rigidbody m_rigidbody;
         private void Awake()
         {
-            m_rigidbody = GetComponent<Rigidbody>();
-            m_healthController = new HealthController(baseData.MaxHealth);
-            m_healthController.OnDie += Die;
+            Initialized();
         }
 
         public float GetCurrSpeed() => m_rigidbody.velocity.magnitude;
         public virtual void HitToModel<T>(T p_attacker, float p_damage) where T : BaseModel{}
         public virtual void Die() {}
+
+        protected virtual void Initialized()
+        {
+            m_rigidbody = GetComponent<Rigidbody>();
+            m_healthController = new HealthController(baseData.MaxHealth);
+            m_healthController.OnDie += Die;
+        } 
         
         public void DoDamage(float p_damage)
         {

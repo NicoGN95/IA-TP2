@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _Main._main.Scripts.Datas;
 using _Main._main.Scripts.Guns;
+using _Main._main.Scripts.Managers;
 using _Main._main.Scripts.PickUps;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -18,12 +19,14 @@ namespace _Main._main.Scripts.Entities.Player
         private readonly Collider[] m_colliders = new Collider[2];
         private PlayerVisual m_view;
 
-
-        private void Start()
+        protected override void Initialized()
         {
+            base.Initialized();
+            GameManager.Instance.SetLocalPlayer(this);
             m_view = GetComponent<PlayerVisual>();
-            gun.Equip(handTransform);
+            gun.Equip(handTransform, data.OwnerMask);
         }
+
 
         public PlayerData GetData() => data;
         public PlayerInputData GetPlayerInputData() => data.InputData;

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _Main._main.Scripts.Entities.Player;
 using _Main._main.Scripts.Services;
 using _Main._main.Scripts.Services.MicroServices.EventsServices;
 using _Main._main.Scripts.StaticClass;
@@ -21,9 +22,13 @@ namespace _Main._main.Scripts.Managers
         [SerializeField] private GameObject messagePanel;
         [SerializeField] private Text messageText;
         [SerializeField] private float displayTime = 5f;
+        [SerializeField] private Slider healthBar;
 
         private bool isUIVisible = true;
         private float timer;
+
+        private Objective currentObjective;
+        private PlayerModel m_playerModel;
 
         private bool m_isActivateMessage;
 
@@ -35,6 +40,7 @@ namespace _Main._main.Scripts.Managers
             EventService.AddListener(EventsDefinitions.ACTIVATE_HUD_INTERACT, ActivateHudInteractHandler);
             EventService.AddListener(EventsDefinitions.DEACTIVATE_HUD_INTERACT, DeactivateHudInteractHandler);
             EventService.AddListener<MessageHUDEventData>(OnMessageHUDHandler);
+            EventService.AddListener(EventsDefinitions.OBJECTIVE_COMPLETED, AdvanceObjective);
         }
 
         private void OnMessageHUDHandler(MessageHUDEventData p_data)
@@ -66,8 +72,12 @@ namespace _Main._main.Scripts.Managers
 
         private void Start()
         {
+            currentObjective = Objective.First;
             ShowUI();
-            SetObjectiveText(1, "First Objective");
+            SetObjectiveText(1, firstObjectiveText.text);
+
+            m_playerModel = GameManager.Instance.GetLocalPlayer();
+            m_playerModel.m_healthController.OnChangeHealth += UpdateHealthBar;
             
             InputManager.Instance.SubscribeInput("HUD", OnPressKeyHandler);
         }
@@ -76,11 +86,14 @@ namespace _Main._main.Scripts.Managers
         {
             if (!isUIVisible)
             {
-                HideUI();
-                return;
+                ShowUI();
             }
-            
-            ShowUI();
+            else
+            {
+                HideUI();
+            }
+
+            timer = displayTime + Time.time;
         }
 
         private void Update()
@@ -100,17 +113,51 @@ namespace _Main._main.Scripts.Managers
             {
                 case 1:
                     firstObjectiveText.text = p_objectiveText;
+                    firstObjectiveText.gameObject.SetActive(true);
+                    secondObjectiveText.gameObject.SetActive(false);
+                    thirdObjectiveText.gameObject.SetActive(false);
                     break;
                 case 2:
                     secondObjectiveText.text = p_objectiveText;
+                    firstObjectiveText.gameObject.SetActive(false);
+                    secondObjectiveText.gameObject.SetActive(true);
+                    thirdObjectiveText.gameObject.SetActive(false);
                     break;
                 case 3:
                     thirdObjectiveText.text = p_objectiveText;
+                    firstObjectiveText.gameObject.SetActive(false);
+                    secondObjectiveText.gameObject.SetActive(false);
+                    thirdObjectiveText.gameObject.SetActive(true);
                     break;
                 default:
                     Debug.LogError("Invalid Objective Index: " + p_objectiveIndex);
                     break;
             }
+        }
+
+        public void AdvanceObjective()
+        {
+            switch (currentObjective)
+            {
+                case Objective.First:
+                    currentObjective = Objective.Second;
+                    SetObjectiveText(2, secondObjectiveText.text);
+                    ShowUI();
+                    break;
+                case Objective.Second:
+                    currentObjective = Objective.Third;
+                    SetObjectiveText(3, thirdObjectiveText.text);
+                    ShowUI();
+                    break;
+                case Objective.Third:
+                    HideUI();
+                    break;
+            }
+        }
+
+        private void UpdateHealthBar(float maxHealth, float currentHealth)
+        {
+            healthBar.value = currentHealth / maxHealth;
         }
 
         private void ShowUI()
@@ -140,4 +187,6 @@ namespace _Main._main.Scripts.Managers
             viewTime = p_viewTime;
         }
     }
+    public enum Objective { First, Second, Third }
+    
 }

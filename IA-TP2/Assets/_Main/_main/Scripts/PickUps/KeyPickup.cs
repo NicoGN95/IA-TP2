@@ -17,6 +17,7 @@ public class KeyPickup : MonoBehaviour, IInteractable
         p_playerModel.AddKey(keyId);
         Destroy(gameObject);
         EventService.DispatchEvent(EventsDefinitions.DEACTIVATE_HUD_INTERACT);
+        EventService.DispatchEvent(EventsDefinitions.OBJECTIVE_COMPLETED);
     }
 
     private void OnTriggerEnter(Collider p_other)

@@ -41,7 +41,7 @@ namespace _Main._main.Scripts.Entities.Enemies
             m_obstacleAvoidance = new ObstacleAvoidance(this);
 
             m_gun = Instantiate(data.GunPrefab);
-            m_gun.Equip(gunPivot);
+            m_gun.Equip(gunPivot, data.OwnerMask);
         
         }
 

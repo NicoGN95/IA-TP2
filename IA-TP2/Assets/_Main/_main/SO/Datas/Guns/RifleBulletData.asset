@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e4d023db90474485a77d5eae3610e6, type: 3}
   m_Name: RifleBulletData
   m_EditorClassIdentifier: 
-  speed: 25
+  speed: 0.5
   damage: 10
   lifeTime: 10
