@@ -31,6 +31,7 @@ namespace _Main._main.Scripts.Objects
             m_isOpen = !m_isOpen;
             doorCollider.enabled = !m_isOpen;
             animator.SetBool(IsOpenAnimId, m_isOpen);
+            doorCollider.gameObject.SetActive(false);
             EventService.DispatchEvent(EventsDefinitions.OBJECTIVE_COMPLETED);
         }
         

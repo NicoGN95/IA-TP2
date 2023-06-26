@@ -12,7 +12,9 @@ namespace _Main._main.Scripts.Managers
             if (!p_other.CompareTag("Player")) 
                 return;
 
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(sceneToLoad);
+            
         }
     }
 }

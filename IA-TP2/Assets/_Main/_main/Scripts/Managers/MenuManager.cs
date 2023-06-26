@@ -20,7 +20,9 @@ namespace _Main._main.Scripts.Managers
 
         private void OnPlayButtonClicked()
         {
+            
             SceneManager.LoadScene(sceneToLoad);
+            
         }
 
         private void OnQuitButtonClicked()

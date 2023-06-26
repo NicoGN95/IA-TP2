@@ -20,6 +20,7 @@ namespace _Main._main.Scripts.Managers
         
         private void Start()
         {
+            Cursor.lockState = CursorLockMode.Confined;
             m_camera = Camera.main;
             m_playerModel = GameManager.Instance.GetLocalPlayer();
             m_data = m_playerModel.GetData();
